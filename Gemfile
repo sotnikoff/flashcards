@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 #
 gem 'rubocop', require: false
+gem 'rubocop-rails'
 gem 'slim'
 
 source 'https://rails-assets.org' do
