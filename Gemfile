@@ -29,8 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 #
-gem 'rubocop', require: false
-gem 'rubocop-rails'
+
 gem 'slim'
 
 source 'https://rails-assets.org' do
@@ -47,6 +46,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
   gem 'selenium-webdriver'
 end
 
