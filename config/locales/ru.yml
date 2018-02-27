@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    models:
+      card:
+        few: Супер-карточки
+        many: Супер-карточки
+        one: Супер-карточка
+        other: Супер-карточки
+    attributes:
+      card:
+        original_text: Оригинальный текст

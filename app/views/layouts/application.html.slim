@@ -10,12 +10,12 @@ html
     .container
       .row#header
         .col-lg-8
-          h3 Флэшкарточкер
+          h4
+            = link_to 'Флэшкарточкер', root_path
         .col-lg-4
           ul.nav.justify-content-end
             li.nav-item
-              a.nav-link[href="#"]
-                | Все карточки
+              = link_to 'Карточки', cards_path, class: 'nav-link'
             li.nav-item
               a.nav-link[href="#"]
                 | Добавить карточку
