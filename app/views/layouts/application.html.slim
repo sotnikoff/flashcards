@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title
+      | Флэшкарточкер
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container
+      .row#header
+        .col-lg-8
+          h3 Флэшкарточкер
+        .col-lg-4
+          ul.nav.justify-content-end
+            li.nav-item
+              a.nav-link[href="#"]
+                | Все карточки
+            li.nav-item
+              a.nav-link[href="#"]
+                | Добавить карточку
+      .row
+        .col-lg
+          = yield

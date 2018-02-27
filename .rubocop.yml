@@ -1,0 +1,105 @@
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - bin/*
+    - vendor/**/*
+    - db/**/*
+    - config/**/*
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - node_modules/**/*
+  TargetRubyVersion: 2.4
+  DisplayCopNames: true
+
+Lint/UnifiedInteger:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - spec/requests/api/**/*.rb
+    - spec/support/shared_examples/api/**/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - app/api/**/*.rb
+    - config/routes.rb
+    - spec/**/*.rb
+
+Metrics/ClassLength:
+  Max: 210
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+
+Style/FileName:
+  Exclude:
+    - Gemfile
+    - Procfile
+    - Rakefile
+
+Style/Documentation:
+  Enabled: false
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/VariableNumber:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Layout/MultilineHashBraceLayout:
+  EnforcedStyle: new_line
+
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceAroundOperators:
+  AllowForAlignment: true
