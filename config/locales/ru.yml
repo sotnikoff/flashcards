@@ -1,4 +1,8 @@
 ru:
+  custom:
+    app_name: Флэшкарточкер
+    cards_page: Список карточек
+    add_new_card: Добавить карточку
   attributes:
     created_at: Создано
     updated_at: Обновлено

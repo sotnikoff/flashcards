@@ -3,4 +3,5 @@ rvm:
   - 2.4.1
 script:
   - bin/bundle exec rubocop
+  - bin/rake db:migrate RAILS_ENV=test
   - bin/bundle exec rspec
