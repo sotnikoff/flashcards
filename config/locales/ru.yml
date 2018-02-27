@@ -1,4 +1,7 @@
 ru:
+  attributes:
+    created_at: Создано
+    updated_at: Обновлено
   activerecord:
     models:
       card:
@@ -9,3 +12,5 @@ ru:
     attributes:
       card:
         original_text: Оригинальный текст
+        translated_text: Переведенный текст
+        review_date: Дата пересмотра
