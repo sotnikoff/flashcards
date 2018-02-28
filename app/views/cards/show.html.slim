@@ -16,5 +16,5 @@ table.table
       td= Card.human_attribute_name :updated_at
       td= @card.updated_at.strftime('%d/%m/%Y %H:%M') if @card.updated_at
 .btn-group
-  = link_to 'Редактировать', edit_card_path(@card), class: 'btn btn-outline-primary'
-  = link_to 'Удалить', card_path(@card), method: :delete, class: 'btn btn-outline-danger'
+  = link_to t('actions.edit'), edit_card_path(@card), class: 'btn btn-outline-primary'
+  = link_to t('actions.delete'), card_path(@card), method: :delete, class: 'btn btn-outline-danger'

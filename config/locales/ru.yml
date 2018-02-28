@@ -1,4 +1,8 @@
 ru:
+  actions:
+    edit: Редактировать
+    create: Создать
+    delete: Удалить
   cards:
     create:
       success: Супер-карточка успешно создана!
