@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Флэшкарточкер
+      = I18n.t 'custom.app_name'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -17,8 +17,16 @@ html
             li.nav-item
               = link_to I18n.t('custom.cards_page'), cards_path, class: 'nav-link'
             li.nav-item
-              a.nav-link[href="#"]
-                = I18n.t('custom.add_new_card')
+              = link_to new_card_path, class: 'nav-link btn btn-outline-success' do
+                = fa_icon 'plus', text: I18n.t('custom.add_new_card')
+      .row
+        .col-md
+          - if notice
+            .alert.alert-primary role='alert'
+              = notice
+          - if alert
+            .alert.alert-danger role='alert'
+              = alert
       .row
         .col-lg
           = yield
