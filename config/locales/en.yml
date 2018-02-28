@@ -30,4 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  cards:
+    create:
+      success: Supercard was successfully created!
+    update:
+      success: Supercard was successfully updated!
+    destroy:
+      success: Supercard was successfully destroyed!
+  custom:
+      app_name: Flashcarder
+      cards_page: List of flashcards
+      add_new_card: Create new flashcard

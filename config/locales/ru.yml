@@ -1,4 +1,11 @@
 ru:
+  cards:
+    create:
+      success: Супер-карточка успешно создана!
+    update:
+      success: Супер-карточка успешно изменена!
+    destroy:
+      success: Супер-карточка успешно удалена!
   custom:
     app_name: Флэшкарточкер
     cards_page: Список карточек
