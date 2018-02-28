@@ -1,0 +1,20 @@
+table.table
+  tbody
+    tr
+      td= Card.human_attribute_name :original_text
+      td= @card.original_text
+    tr
+      td= Card.human_attribute_name :translated_text
+      td= @card.translated_text
+    tr
+      td= Card.human_attribute_name :review_date
+      td= l @card.review_date, format: :short_date if @card.review_date
+    tr
+      td= Card.human_attribute_name :created_at
+      td= l @card.created_at, format: :short_datetime
+    tr
+      td= Card.human_attribute_name :updated_at
+      td= l @card.updated_at, format: :short_datetime
+.btn-group
+  = link_to t('actions.edit'), edit_card_path(@card), class: 'btn btn-outline-primary'
+  = link_to t('actions.delete'), card_path(@card), method: :delete, class: 'btn btn-outline-danger'

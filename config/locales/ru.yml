@@ -1,0 +1,35 @@
+ru:
+  time:
+    formats:
+      short_date: "%d/%m/%Y"
+      short_datetime: "%d/%m/%Y %H:%M"
+  actions:
+    edit: Редактировать
+    create: Создать
+    delete: Удалить
+  cards:
+    create:
+      success: Супер-карточка успешно создана!
+    update:
+      success: Супер-карточка успешно изменена!
+    destroy:
+      success: Супер-карточка успешно удалена!
+  custom:
+    app_name: Флэшкарточкер
+    cards_page: Список карточек
+    add_new_card: Добавить карточку
+  attributes:
+    created_at: Создано
+    updated_at: Обновлено
+  activerecord:
+    models:
+      card:
+        few: Супер-карточки
+        many: Супер-карточки
+        one: Супер-карточка
+        other: Супер-карточки
+    attributes:
+      card:
+        original_text: Оригинальный текст
+        translated_text: Переведенный текст
+        review_date: Дата пересмотра

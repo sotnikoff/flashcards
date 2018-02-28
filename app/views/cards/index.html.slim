@@ -1,0 +1,17 @@
+h1= Card.model_name.human(count: @cards.count)
+table.table
+  thead
+    tr
+      th= Card.human_attribute_name :original_text
+      th= Card.human_attribute_name :translated_text
+      th= Card.human_attribute_name :review_date
+      th= Card.human_attribute_name :created_at
+      th= Card.human_attribute_name :updated_at
+  tbody
+    - @cards.each do |card|
+      tr
+        td= link_to card.original_text, card_path(card)
+        td= card.translated_text
+        td= l card.review_date, format: :short_date if card.review_date
+        td= l card.created_at, format: :short_datetime
+        td= l card.updated_at , format: :short_datetime

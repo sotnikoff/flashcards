@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Флэшкарточкер
+      = t 'custom.app_name'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -10,15 +10,23 @@ html
     .container
       .row#header
         .col-lg-8
-          h3 Флэшкарточкер
+          h4
+            = link_to t('custom.app_name'), root_path
         .col-lg-4
           ul.nav.justify-content-end
             li.nav-item
-              a.nav-link[href="#"]
-                | Все карточки
+              = link_to t('custom.cards_page'), cards_path, class: 'nav-link'
             li.nav-item
-              a.nav-link[href="#"]
-                | Добавить карточку
+              = link_to new_card_path, class: 'nav-link btn btn-outline-success' do
+                = fa_icon 'plus', text: t('custom.add_new_card')
+      .row
+        .col-md
+          - if notice
+            .alert.alert-primary role='alert'
+              = notice
+          - if alert
+            .alert.alert-danger role='alert'
+              = alert
       .row
         .col-lg
           = yield
