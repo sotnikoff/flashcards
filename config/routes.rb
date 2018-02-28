@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :cards, only: %i[index]
+  resources :cards
 
   root to: 'pages#index'
 
