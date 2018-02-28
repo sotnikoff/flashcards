@@ -14,7 +14,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    if @card.update card_params
+    if @card.update(card_params)
       redirect_to @card, notice: t('.success')
     else
       render :edit
@@ -22,7 +22,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new card_params
+    @card = Card.new(card_params)
     if @card.save
       redirect_to @card, notice: t('.success')
     else
@@ -38,7 +38,7 @@ class CardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.find params[:id]
+    @card = Card.find(params[:id])
   end
 
   def card_params
