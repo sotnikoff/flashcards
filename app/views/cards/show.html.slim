@@ -8,13 +8,13 @@ table.table
       td= @card.translated_text
     tr
       td= Card.human_attribute_name :review_date
-      td= @card.review_date.strftime('%d/%m/%Y') if @card.review_date
+      td= l @card.review_date, format: :short_date if @card.review_date
     tr
       td= Card.human_attribute_name :created_at
-      td= @card.created_at.strftime('%d/%m/%Y %H:%M') if @card.created_at
+      td= l @card.created_at, format: :short_datetime
     tr
       td= Card.human_attribute_name :updated_at
-      td= @card.updated_at.strftime('%d/%m/%Y %H:%M') if @card.updated_at
+      td= l @card.updated_at, format: :short_datetime
 .btn-group
   = link_to t('actions.edit'), edit_card_path(@card), class: 'btn btn-outline-primary'
   = link_to t('actions.delete'), card_path(@card), method: :delete, class: 'btn btn-outline-danger'

@@ -30,6 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  time:
+    formats:
+      short_date: "%m/%d/%Y"
+      short_datetime: "%m/%d/%Y %H:%M"
   actions:
     edit: Edit
     create: Create

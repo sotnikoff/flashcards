@@ -1,4 +1,8 @@
 ru:
+  time:
+    formats:
+      short_date: "%d/%m/%Y"
+      short_datetime: "%d/%m/%Y %H:%M"
   actions:
     edit: Редактировать
     create: Создать
