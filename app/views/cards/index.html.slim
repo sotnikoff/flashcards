@@ -10,8 +10,8 @@ table.table
   tbody
     - @cards.each do |card|
       tr
-        td= card.original_text
+        td= link_to card.original_text, card_path(card)
         td= card.translated_text
-        td= card.review_date.strftime('%d/%m/%Y')
-        td= card.created_at.strftime('%d/%m/%Y %H:%M')
-        td= card.updated_at.strftime('%d/%m/%Y %H:%M')
+        td= card.review_date.strftime('%d/%m/%Y') if card.review_date
+        td= card.created_at.strftime('%d/%m/%Y %H:%M') if card.created_at
+        td= card.updated_at.strftime('%d/%m/%Y %H:%M') if card.updated_at
