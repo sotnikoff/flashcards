@@ -28,7 +28,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 #
 
+gem 'font-awesome-rails'
 gem 'pg', '~> 0.21.0'
+gem 'simple_form'
 gem 'slim'
 
 source 'https://rails-assets.org' do
