@@ -14,20 +14,18 @@ class CardsController < ApplicationController
   end
 
   def update
-    p CheckCard.call(card_params)
-    if @card.update(card_params)
+    if CheckCard.call(card_params) && @card.update(card_params)
       redirect_to @card, notice: t('.success')
     else
-      render :edit
+      redirect_to edit_card_path(@card), notice: t('.failure')
     end
   end
 
   def create
-    @card = Card.new(card_params)
-    if @card.save
-      redirect_to @card, notice: t('.success')
+    if CheckCard.call(card_params) && Card.create(card_params)
+      redirect_to cards_path, notice: t('.success')
     else
-      render :new
+      render :new, notice: t('.failure')
     end
   end
 
@@ -43,7 +41,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date)
+    params.require(:card).permit(:original_text, :translated_text)
   end
 
 end
