@@ -14,6 +14,7 @@ class CardsController < ApplicationController
   end
 
   def update
+    p CheckCard.call(card_params)
     if @card.update(card_params)
       redirect_to @card, notice: t('.success')
     else
