@@ -25,6 +25,16 @@ ru:
     created_at: Создано
     updated_at: Обновлено
   activerecord:
+    errors:
+      messages:
+        not_same_word: Поля не могут быть одинаковыми
+      models:
+        card:
+          attributes:
+            original_text:
+              blank: Поле Оригинальный текст не может быть пустым
+            translated_text:
+              blank: Поле Переведенный текст не может быть пустым
     models:
       card:
         few: Супер-карточки

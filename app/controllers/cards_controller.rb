@@ -14,18 +14,19 @@ class CardsController < ApplicationController
   end
 
   def update
-    if CheckCard.call(card_params) && @card.update(card_params)
+    if @card.update(card_params)
       redirect_to @card, notice: t('.success')
     else
-      redirect_to edit_card_path(@card), notice: t('.failure')
+      render :edit
     end
   end
 
   def create
-    if CheckCard.call(card_params) && Card.create(card_params)
+    @card = Card.new(card_params)
+    if @card.save(card_params)
       redirect_to cards_path, notice: t('.success')
     else
-      render :new, notice: t('.failure')
+      render :new
     end
   end
 
