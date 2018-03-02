@@ -10,10 +10,13 @@ ru:
   cards:
     create:
       success: Супер-карточка успешно создана!
+      failure: Ошибка при создании карточки!
     update:
       success: Супер-карточка успешно изменена!
+      failure: Ошибка при изменении карточки!
     destroy:
       success: Супер-карточка успешно удалена!
+      failure: Ошибка при удалении карточки!
   custom:
     app_name: Флэшкарточкер
     cards_page: Список карточек
@@ -22,6 +25,16 @@ ru:
     created_at: Создано
     updated_at: Обновлено
   activerecord:
+    errors:
+      messages:
+        not_same_word: Поля не могут быть одинаковыми
+      models:
+        card:
+          attributes:
+            original_text:
+              blank: Поле Оригинальный текст не может быть пустым
+            translated_text:
+              blank: Поле Переведенный текст не может быть пустым
     models:
       card:
         few: Супер-карточки

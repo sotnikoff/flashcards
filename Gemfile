@@ -35,6 +35,7 @@ gem 'slim'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
+  gem 'rails-assets-jquery'
 end
 
 # Use Capistrano for deployment
