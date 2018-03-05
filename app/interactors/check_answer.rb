@@ -11,4 +11,6 @@ module CheckAnswer
   def self.compare_answers(translated_text, answer)
     translated_text.casecmp(answer.strip).zero?
   end
+
+  private_class_method :compare_answers
 end
