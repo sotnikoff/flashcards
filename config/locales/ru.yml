@@ -1,4 +1,12 @@
 ru:
+  answers:
+    new:
+      placeholder: Ваш ответ
+      no_cards: Нет карточек
+      button: Ответить
+    create:
+      correct: Ваш ответ правильный
+      wrong: Ваш ответ неверный
   time:
     formats:
       short_date: "%d/%m/%Y"
