@@ -1,5 +1,7 @@
 class Card < ApplicationRecord
 
+  scope :to_review, -> { where('review_date <= ?', Time.now).order('RANDOM()').limit(1) }
+
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validate do

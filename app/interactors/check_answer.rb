@@ -1,18 +1,18 @@
 class CheckAnswer
-  include Interactor
 
-  def call
-    card = Card.find_by_id(context.id)
-    if compare_answers(card)
-      card.update(review_date: 3.days.since(Time.now))
+  def self.call(compare_object, answer)
+    puts compare_object.translated_text
+    puts answer
+    puts compare_answers(compare_object.translated_text, answer)
+    if compare_answers(compare_object.translated_text, answer)
+      compare_object.update(review_date: 3.days.since(Time.now))
+      I18n.t('answers.create.correct')
     else
-      context.fail!
+      I18n.t('answers.create.wrong')
     end
   end
 
-  private
-
-  def compare_answers(card)
-    card.translated_text.casecmp(context.answer.strip).zero?
+  def self.compare_answers(translated_text, answer)
+    translated_text.casecmp(answer.strip).zero?
   end
 end

@@ -1,15 +1,11 @@
 class AnswersController < ApplicationController
   def new
-    @card = Card.where('review_date <= NOW()').order('RANDOM()').first
+    @card = Card.to_review.first
   end
 
   def create
-    result = CheckAnswer.call(params)
-    notice = if result.success?
-               t('.correct')
-             else
-               t('.wrong')
-             end
+    card = Card.find(params[:id])
+    notice = CheckAnswer.call(card, params[:answer])
     redirect_to root_path, notice: notice
   end
 end
