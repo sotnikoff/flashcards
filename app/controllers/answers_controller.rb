@@ -4,12 +4,12 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @card = Card.find_by_id(params[:id])
-    notice = "Wrong answer! Correct was \"#{@card.translated_text}\""
-    if @card.translated_text == params[:answer]
-      notice = 'You are right!'
-      @card.update(review_date: 3.days.since(Time.now))
-    end
-    redirect_to new_answer_path, notice: notice
+    result = CheckAnswer.call(params)
+    notice = if result.success?
+               t('.correct')
+             else
+               t('.wrong')
+             end
+    redirect_to root_path, notice: notice
   end
 end

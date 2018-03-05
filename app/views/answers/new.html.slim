@@ -1,8 +1,12 @@
-=form_tag(answers_path, class: 'col-lg-6') do
-  h1= @card.original_text
-  = hidden_field_tag :id, @card.id
-  .form-group
-    = text_field_tag :answer, @card.translated_text,
-            class: 'form-control',
-            placeholder: 'Your answer goes here...'
-  = submit_tag 'GO!'
+- if @card
+  =form_tag(answers_path, class: 'col-lg-6') do
+    h1= @card.original_text
+    = hidden_field_tag :id, @card.id
+    .form-group
+      = text_field_tag :answer, nil,
+              class: 'form-control',
+              placeholder: t('.placeholder'),
+              required: true
+    = submit_tag t('.button'), class: 'btn btn-success'
+- else
+  h1= t('.no_cards')

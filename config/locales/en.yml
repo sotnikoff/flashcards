@@ -30,6 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  answers:
+    new:
+      placeholder: Your answer goes here
+      no_cards: No cards available
+      button: Answer
+    create:
+      correct: You're right!
+      wrong: You're wrong!
   time:
     formats:
       short_date: "%m/%d/%Y"
