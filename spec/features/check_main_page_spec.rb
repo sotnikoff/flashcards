@@ -7,7 +7,12 @@ describe 'the answering process' do
     card
   end
 
-  scenario 'visit main page' do
+  scenario 'visit empty main page' do
+    visit '/'
+    expect(page).to have_content I18n.t('answers.new.no_cards')
+  end
+
+  scenario 'visit main page with cards' do
     create_card
     visit '/'
     expect(page).to have_content 'Zuhause'
