@@ -1,5 +1,5 @@
 - if @card
-  =form_tag(answers_path, class: 'col-lg-6') do
+  =form_tag(answers_path, class: 'col-lg-6', id: 'answers-form') do
     h1= @card.original_text
     = hidden_field_tag :id, @card.id
     .form-group
