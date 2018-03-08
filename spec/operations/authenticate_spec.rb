@@ -12,8 +12,14 @@ RSpec.describe Authenticate do
 
     it 'returns true when password is correct' do
       test_model = ExampleModel.new('123456')
-      result = Authenticate.auth(test_model,'123456')
+      result = Authenticate.auth(test_model, '123456')
       expect(result).to eq(true)
+    end
+
+    it 'returns false when password is not correct' do
+      test_model = ExampleModel.new('123456')
+      result = Authenticate.auth(test_model, '0987654')
+      expect(result).to eq(false)
     end
   end
 end
