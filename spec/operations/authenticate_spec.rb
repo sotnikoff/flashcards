@@ -3,22 +3,17 @@ require 'bcrypt'
 
 RSpec.describe Authenticate do
   describe 'Checking password' do
-    class ExampleModel
-      attr_accessor :hash_password
-      def initialize(password)
-        @hash_password = BCrypt::Password.create(password)
-      end
+    before(:each) do
+      @hash = '$2a$10$EvR4dTsn7G0kvju9A/jeZ.tkm/kJLsXqxZEjlG3rEuS4b0MnRLwMW'
     end
 
     it 'returns true when password is correct' do
-      test_model = ExampleModel.new('123456')
-      result = Authenticate.auth(test_model, '123456')
+      result = Authenticate.call(@hash, '123456')
       expect(result).to eq(true)
     end
 
     it 'returns false when password is not correct' do
-      test_model = ExampleModel.new('123456')
-      result = Authenticate.auth(test_model, '0987654')
+      result = Authenticate.call(@hash, 'wrong password')
       expect(result).to eq(false)
     end
   end
