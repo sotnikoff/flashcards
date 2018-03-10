@@ -76,6 +76,8 @@ Style/VariableNumber:
 Style/RegexpLiteral:
   Enabled: false
 
+Style/ModuleFunction:
+  Enabled: false
 
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
