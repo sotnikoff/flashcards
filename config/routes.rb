@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'login', to: 'sessions#new', as: 'login_page'
+  post 'sessions', to: 'sessions#create', as: 'login'
+  delete 'session', to: 'sessions#destroy', as: 'logout'
 
-  resources :sessions, only: %i[new create destroy]
   resources :cards
   resources :answers, only: %i[new create]
 
