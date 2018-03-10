@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
   def new
-    puts current_user
     @card = Card.to_review.first
   end
 

@@ -1,4 +1,9 @@
-=form_tag(login_path)
-  =email_field_tag :email
-  =password_field_tag :password
-  =submit_tag 'Log in'
+= form_tag(login_path)
+  .form-group
+    = label_tag :email, 'E-mail'
+    = email_field_tag :email, nil, class: 'form-control'
+  .form-group
+    = label_tag :password, 'Password'
+    = password_field_tag :password, nil, class: 'form-control'
+  .form-group
+    = submit_tag 'Log in', class: 'btn btn-success'

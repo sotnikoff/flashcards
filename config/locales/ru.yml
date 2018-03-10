@@ -29,6 +29,7 @@ ru:
     app_name: Флэшкарточкер
     cards_page: Список карточек
     add_new_card: Добавить карточку
+    login: Вход
   attributes:
     created_at: Создано
     updated_at: Обновлено

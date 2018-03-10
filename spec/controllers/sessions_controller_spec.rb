@@ -10,14 +10,14 @@ RSpec.describe SessionsController, type: :controller do
         email: authorizing_user.email,
         password: '123456'
       }
-      expect(session[:current_user]).to eq(authorizing_user.id)
+      expect(session[:current_user_id]).to eq(authorizing_user.id)
     end
 
     it 'fails with bad password' do
       authorizing_user = user
-      session[:current_user] = authorizing_user.id
+      session[:current_user_id] = authorizing_user.id
       delete :destroy
-      expect(session[:current_user]).to eq(nil)
+      expect(session[:current_user_id]).to eq(nil)
     end
   end
 end
