@@ -19,6 +19,5 @@ RSpec.describe SessionsController, type: :controller do
       delete :destroy
       expect(session[:current_user]).to eq(nil)
     end
-
   end
 end
