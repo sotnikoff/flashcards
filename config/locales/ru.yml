@@ -30,6 +30,7 @@ ru:
     cards_page: Список карточек
     add_new_card: Добавить карточку
     login: Вход
+    sign_up: Регистрация
   attributes:
     created_at: Создано
     updated_at: Обновлено
