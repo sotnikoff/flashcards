@@ -19,9 +19,9 @@ html
             li.nav-item
               = link_to new_card_path, class: 'nav-link btn btn-outline-success' do
                 = fa_icon 'plus', text: t('custom.add_new_card')
-            - if @current_user
+            - if current_user
               li.nav-item
-                = link_to @current_user.email, logout_path, method: :delete, class: 'nav-link'
+                = link_to current_user.email, logout_path, method: :delete, class: 'nav-link'
             - else
               li.nav-item
                 = link_to t('custom.login'), login_page_path, class: 'nav-link'
