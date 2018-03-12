@@ -9,16 +9,24 @@ html
   body
     .container
       .row#header
-        .col-lg-8
+        .col-lg-3
           h4
             = link_to t('custom.app_name'), root_path
-        .col-lg-4
+        .col-lg-9
           ul.nav.justify-content-end
             li.nav-item
               = link_to t('custom.cards_page'), cards_path, class: 'nav-link'
             li.nav-item
               = link_to new_card_path, class: 'nav-link btn btn-outline-success' do
                 = fa_icon 'plus', text: t('custom.add_new_card')
+            - if current_user
+              li.nav-item
+                = link_to current_user.email, logout_path, method: :delete, class: 'nav-link'
+            - else
+              li.nav-item
+                = link_to t('custom.login'), login_page_path, class: 'nav-link'
+              li.nav-item
+                = link_to t('custom.sign_up'), sign_up_page_path, class: 'nav-link'
       .row
         .col-md
           - if notice
