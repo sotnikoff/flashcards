@@ -3,11 +3,17 @@ class RegistrationsController < ApplicationController
 
   def create
     user = User.new(email: params[:email], password_hash: Auth.generate(params[:password]))
-    if user.save
-      redirect_to root_path, notice: 'Registration done!'
+    notice = t('.registration_failed')
+    if compare_passwords && user.save
       session[:current_user_id] = user.id
-    else
-      redirect_to root_path, notice: 'Registration failed!'
+      notice = t('.registration_done')
     end
+    redirect_to root_path, notice: notice
+  end
+
+  private
+
+  def compare_passwords
+    params[:password] == params[:password_confirmation]
   end
 end

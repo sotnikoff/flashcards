@@ -1,10 +1,13 @@
 h1 Registration
 = form_tag(sign_up_path, id: 'registration-form')
   .form-group
-    = label_tag :email, 'E-mail'
+    = label_tag :email, t('.email')
     = email_field_tag :email, nil, class: 'form-control'
   .form-group
-    = label_tag :password, 'Password'
+    = label_tag :password, t('.password')
     = password_field_tag :password, nil, class: 'form-control'
   .form-group
-    = submit_tag 'Sign up', class: 'btn btn-success'
+    = label_tag :password_confirmation, t('.password_confirmation')
+    = password_field_tag :password_confirmation, nil, class: 'form-control'
+  .form-group
+    = submit_tag t('.sign_up'), class: 'btn btn-success'

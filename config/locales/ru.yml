@@ -1,4 +1,23 @@
 ru:
+  registrations:
+    new:
+      email: Адрес электронной почты
+      sign_up: Вход
+      password: Пароль
+      password_confirmation: Повторение пароля
+    create:
+      registration_done: Регистрация выполнена успешно!
+      registration_failed: Ошибка при регистрации!
+  sessions:
+    new:
+      email: Адрес электронной почты
+      log_in: Вход
+      password: Пароль
+    create:
+      authorization_done: Вы успешно зашли
+      authorization_failed: Ошибка авторизации
+    destroy:
+      log_out_done: Вы успешно вышли
   answers:
     new:
       placeholder: Ваш ответ

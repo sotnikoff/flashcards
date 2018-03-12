@@ -1,10 +1,10 @@
 h1 Login page
 = form_tag(login_path, id: 'auth-form')
   .form-group
-    = label_tag :email, 'E-mail'
+    = label_tag :email, t('.email')
     = email_field_tag :email, nil, class: 'form-control'
   .form-group
-    = label_tag :password, 'Password'
+    = label_tag :password, t('.password')
     = password_field_tag :password, nil, class: 'form-control'
   .form-group
-    = submit_tag 'Log in', class: 'btn btn-success'
+    = submit_tag t('.log_in'), class: 'btn btn-success'

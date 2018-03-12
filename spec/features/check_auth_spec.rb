@@ -15,7 +15,7 @@ describe 'Auth process' do
       fill_in 'email', with: auth_user.email
       fill_in 'password', with: '123456'
     end
-    click_button 'Log in'
-    expect(page).to have_content 'Successfully logged in'
+    click_button I18n.t('sessions.new.log_in')
+    expect(page).to have_content I18n.t('sessions.create.authorization_done')
   end
 end

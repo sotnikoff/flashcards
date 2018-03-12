@@ -11,8 +11,9 @@ describe 'Check registration' do
     within '#registration-form' do
       fill_in 'email', with: 'some.random.mail@example.com'
       fill_in 'password', with: 'secretPhrase'
+      fill_in 'password_confirmation', with: 'secretPhrase'
     end
-    click_button 'Sign up'
-    expect(page).to have_content 'Registration done!'
+    click_button I18n.t('registrations.new.sign_up')
+    expect(page).to have_content I18n.t('registrations.create.registration_done')
   end
 end
