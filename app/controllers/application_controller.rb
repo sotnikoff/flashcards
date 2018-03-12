@@ -1,8 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :current_user
+
+  NotAuthorized = Class.new(StandardError)
+
+  def authorize!
+    unless current_user
+      raise NotAuthorized
+    end
+  end
 
   def current_user
-    @current_user ||= User.find(session[:current_user_id]) if session[:current_user_id]
+    @current_user ||= User.where(id: session[:current_user_id]).first
   end
 end
