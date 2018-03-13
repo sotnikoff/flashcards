@@ -1,20 +1,38 @@
-require 'uri'
-require 'net/http'
-
 class GithubSessionsController < ApplicationController
   def new
+    redirect_to root_path, notice: 'Already signed in' if session[:current_user_id]
     id = Rails.application.secrets.github_client_id
     redirect_to "https://github.com/login/oauth/authorize?client_id=#{id}&scope=user"
   end
 
   def callback
     redirect_to root_path unless params[:code]
+    auth
+    redirect_to root_path
+  end
 
-    GithubOauth.perform_token_request(
+  private
+
+  def auth
+    GithubOauth.perform_auth(
       Rails.application.secrets.github_client_id,
       Rails.application.secrets.github_client_secret,
       params[:code]
     )
-    redirect_to root_path
+  end
+
+  def register_user(email, token)
+    user = User.where(email: email).first
+    if user
+      user.update(github_token: token)
+      session[:current_user_id] = user.id
+    else
+      new_user = User.create(
+        email: email,
+        password_hash: Auth.generate('somePassword'),
+        github_token: token
+      )
+      session[:current_user_id] = new_user.id
+    end
   end
 end
