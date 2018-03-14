@@ -14,11 +14,12 @@ class GithubSessionsController < ApplicationController
   private
 
   def auth
-    GithubOauth.perform_auth(
+    data = GithubOauth.perform_auth(
       Rails.application.secrets.github_client_id,
       Rails.application.secrets.github_client_secret,
       params[:code]
     )
+    register_user(data[:email], data[:email])
   end
 
   def register_user(email, token)
@@ -27,11 +28,7 @@ class GithubSessionsController < ApplicationController
       user.update(github_token: token)
       session[:current_user_id] = user.id
     else
-      new_user = User.create(
-        email: email,
-        password_hash: Auth.generate('somePassword'),
-        github_token: token
-      )
+      new_user = User.create(email: email, github_token: token)
       session[:current_user_id] = new_user.id
     end
   end

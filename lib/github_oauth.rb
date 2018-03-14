@@ -4,7 +4,7 @@ module GithubOauth
   def perform_auth(client_id, client_secret, code)
     token = perform_token_request(client_id, client_secret, code)
     if token
-      get_user_emails(token)
+      { email: get_user_email(token), token: token }
     end
   end
 
@@ -21,15 +21,13 @@ module GithubOauth
     JSON.parse(response.body)['access_token'] if response.status == 200
   end
 
-  def get_user_emails(token)
+  def get_user_email(token)
     client = Faraday.new(url: 'https://api.github.com')
     response = client.get do |req|
       req.url 'user/emails'
       req.headers['Authorization'] = "token #{token}"
     end
-    result = JSON.parse(response.body).select do |hash|
-      hash['primary']
-    end
+    result = JSON.parse(response.body).select { |hash| hash['primary'] }
     result[0]['email']
   end
 end
