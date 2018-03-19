@@ -6,7 +6,7 @@ class GithubSessionsController < ApplicationController
   end
 
   def callback
-    redirect_to root_path unless params[:code]
+    return redirect_to root_path unless params[:code]
     auth
     redirect_to root_path
   end
@@ -19,11 +19,11 @@ class GithubSessionsController < ApplicationController
       Rails.application.secrets.github_client_secret,
       params[:code]
     )
-    register_user(data[:email], data[:email])
+    register_user(data[:email], data[:token])
   end
 
   def register_user(email, token)
-    user = User.where(email: email).first
+    user = User.find_by(email: email)
     if user
       user.update(github_token: token)
       session[:current_user_id] = user.id
