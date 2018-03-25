@@ -21,6 +21,6 @@ public/uploads/*
 /yarn-error.log
 
 /.idea
-/config/secrets.yml
+.env
 
 .byebug_history
