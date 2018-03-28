@@ -17,6 +17,8 @@ html
             li.nav-item
               = link_to t('custom.cards_page'), cards_path, class: 'nav-link'
             li.nav-item
+              = link_to t('custom.decks_page'), decks_path, class: 'nav-link'
+            li.nav-item
               = link_to new_card_path, class: 'nav-link btn btn-outline-success' do
                 = fa_icon 'plus', text: t('custom.add_new_card')
             - if current_user

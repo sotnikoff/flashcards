@@ -47,6 +47,7 @@ ru:
   custom:
     app_name: Флэшкарточкер
     cards_page: Список карточек
+    decks_page: Список колод
     add_new_card: Добавить карточку
     login: Вход
     sign_up: Регистрация
