@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :cards
+  resources :decks
   resources :answers, only: %i[new create]
 
   root to: 'answers#new'
