@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-
+  mount_uploader :image, CardImageUploader
   scope :to_review, -> { where('review_date <= ?', Time.now).order('RANDOM()').limit(1) }
 
   validates :original_text, presence: true

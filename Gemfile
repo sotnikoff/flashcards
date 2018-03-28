@@ -26,9 +26,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-#
+
+gem 'carrierwave', '~> 1.0'
 gem 'faraday'
 gem 'font-awesome-rails'
+gem 'mini_magick'
 gem 'pg', '~> 0.21.0'
 gem 'simple_form'
 gem 'slim'
@@ -46,6 +48,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
