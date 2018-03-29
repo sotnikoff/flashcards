@@ -23,7 +23,8 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    if @card.save(card_params)
+    @card.user = current_user
+    if @card.save
       redirect_to cards_path, notice: t('.success')
     else
       render :new

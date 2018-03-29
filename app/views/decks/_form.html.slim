@@ -1,0 +1,5 @@
+= simple_form_for deck, html: { multipart: true } do |f|
+  = f.input :title
+  = f.input :description, as: :text
+  = f.input :image, as: :file
+  = f.button :submit

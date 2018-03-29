@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CardsController, type: :controller do
+  before(:each) do
+    @user = create :user
+    session[:current_user_id] = @user.id
+  end
+
   context 'no card needed' do
     describe 'GET #index' do
       it 'returns http success' do
@@ -35,6 +40,7 @@ RSpec.describe CardsController, type: :controller do
     let(:card) do
       Card.create(original_text: 'Original text for testing',
                   translated_text: 'Translated text for testing',
+                  user: @user,
                   review_date: Time.now)
     end
     describe 'GET #show' do

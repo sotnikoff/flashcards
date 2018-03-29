@@ -1,0 +1,9 @@
+- @decks.each do |deck|
+  .col-sm-3
+    .card
+      = image_tag deck.image, class: 'card-img-top' if deck.image
+      .card-body
+        h5.card-title= deck.title
+        p.card-text= deck.description
+        = link_to 'Перейти', deck_path(deck), class: 'card-link'
+        = link_to 'Изменить', edit_deck_path(deck), class: 'card-link'
