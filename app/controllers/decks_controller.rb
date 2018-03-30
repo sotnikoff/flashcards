@@ -18,8 +18,7 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = Deck.new(deck_params)
-    @deck.user = current_user
+    @deck = Deck.new(deck_params.merge(user: current_user))
     if @deck.save
       redirect_to decks_path, notice: t('.success')
     else

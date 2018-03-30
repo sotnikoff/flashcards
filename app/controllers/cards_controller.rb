@@ -22,8 +22,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
-    @card.user = current_user
+    @card = Card.new(card_params.merge(user: current_user))
     if @card.save
       redirect_to cards_path, notice: t('.success')
     else
@@ -43,6 +42,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :image)
+    params.require(:card).permit(:original_text, :translated_text, :image, :deck_id)
   end
 end
