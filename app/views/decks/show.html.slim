@@ -1,0 +1,14 @@
+- if @card
+  =form_tag(answers_path, class: 'col-lg-6', id: 'answers-form') do
+    h1= @card.original_text
+    p
+      = image_tag(@card.image) if @card.image
+    = hidden_field_tag :id, @card.id
+    .form-group
+      = text_field_tag :answer, nil,
+              class: 'form-control',
+              placeholder: t('.placeholder'),
+              required: true
+    = submit_tag t('.button'), class: 'btn btn-success'
+- else
+  h1= t('.no_cards')

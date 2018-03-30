@@ -5,7 +5,9 @@ class DecksController < ApplicationController
     @decks = Deck.all
   end
 
-  def show; end
+  def show
+    @card = @deck.cards.to_review.first
+  end
 
   def edit; end
 

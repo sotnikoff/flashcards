@@ -1,4 +1,9 @@
 ru:
+  decks:
+    show:
+      placeholder: Ваш ответ
+      no_cards: Нет карточек
+      button: Ответить
   registrations:
     new:
       email: Адрес электронной почты
