@@ -1,9 +1,22 @@
 ru:
+  users:
+    update:
+      success: Успешно обновлено
+      failure: Ошибка обновления
   decks:
+    index:
+      create_button: Создать колоду
+    create:
+      success: Успешна создана колода
+      failure: Ошибка создания колоды
+    edit:
+      delete_button: Удалить колоду
     show:
       placeholder: Ваш ответ
       no_cards: Нет карточек
       button: Ответить
+    destroy:
+      success: Успешно удалена колода
   registrations:
     new:
       email: Адрес электронной почты
@@ -63,6 +76,7 @@ ru:
     errors:
       messages:
         not_same_word: Поля не могут быть одинаковыми
+        record_invalid: Ошибка записи
       models:
         card:
           attributes:

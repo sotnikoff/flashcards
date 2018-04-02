@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :cards
   resources :decks
   resources :answers, only: %i[new create]
+  resources :users, only: %i[update]
 
   root to: 'answers#new'
 

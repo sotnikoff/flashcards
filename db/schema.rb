@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328211113) do
+ActiveRecord::Schema.define(version: 20180402122900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,13 @@ ActiveRecord::Schema.define(version: 20180328211113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "github_token"
+    t.bigint "deck_id"
+    t.index ["deck_id"], name: "index_users_on_deck_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "cards", "decks"
   add_foreign_key "cards", "users"
   add_foreign_key "decks", "users"
+  add_foreign_key "users", "decks"
 end

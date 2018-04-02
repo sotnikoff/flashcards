@@ -1,1 +1,3 @@
 = render 'form', deck: @deck
+p
+  = link_to t('.delete_button'), deck_path(@deck), method: :delete, class: 'btn btn-danger'
