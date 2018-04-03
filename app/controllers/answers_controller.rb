@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def new
-    @card = Card.card_to_show(default_deck)
+    @card = GetCardForDefault.call(default_deck)
   end
 
   def create

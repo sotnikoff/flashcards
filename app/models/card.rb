@@ -19,8 +19,4 @@ class Card < ApplicationRecord
   def compare_text
     original_text.strip.casecmp(translated_text.strip).zero?
   end
-
-  def self.card_to_show(deck)
-    (deck&.cards&.to_review || Card.without_deck.to_review).first
-  end
 end
