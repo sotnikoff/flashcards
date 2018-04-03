@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   mount_uploader :image, CardImageUploader
   scope :to_review, -> { where('review_date <= ?', Time.now).order('RANDOM()').limit(1) }
+  scope :without_deck, -> { where('deck_id = ?', nil) }
   belongs_to :deck, optional: true
   belongs_to :user
 
@@ -17,5 +18,9 @@ class Card < ApplicationRecord
 
   def compare_text
     original_text.strip.casecmp(translated_text.strip).zero?
+  end
+
+  def self.card_to_show(deck)
+    (deck&.cards&.to_review || Card.without_deck.to_review).first
   end
 end
