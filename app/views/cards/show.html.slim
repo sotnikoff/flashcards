@@ -8,7 +8,7 @@ table.table
       td= @card.translated_text
     tr
       td= Card.human_attribute_name :deck_id
-      td= @card.deck.title if @card.deck
+      td= @card.deck&.title
     tr
       td= Card.human_attribute_name :review_date
       td= l @card.review_date, format: :short_date if @card.review_date

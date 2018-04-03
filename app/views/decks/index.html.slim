@@ -10,3 +10,6 @@ p
         p.card-text= deck.description
         = link_to 'Перейти', deck_path(deck), class: 'card-link'
         = link_to 'Изменить', edit_deck_path(deck), class: 'card-link'
+        = form_tag(user_path(current_user), method: :put)
+          = hidden_field_tag 'user[deck_id]', deck.id
+          = submit_tag 'Сделать по умолчанию', class: 'card-link'
