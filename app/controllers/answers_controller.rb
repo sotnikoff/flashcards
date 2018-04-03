@@ -12,6 +12,6 @@ class AnswersController < ApplicationController
   private
 
   def default_deck
-    current_user.deck
+    current_user&.deck
   end
 end

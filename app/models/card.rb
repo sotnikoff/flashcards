@@ -1,7 +1,7 @@
 class Card < ApplicationRecord
   mount_uploader :image, CardImageUploader
   scope :to_review, -> { where('review_date <= ?', Time.now).order('RANDOM()').limit(1) }
-  scope :without_deck, -> { where('deck_id = ?', nil) }
+  scope :without_deck, -> { where(deck_id: nil) }
   belongs_to :deck, optional: true
   belongs_to :user
 
