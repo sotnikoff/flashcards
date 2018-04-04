@@ -59,7 +59,7 @@ RSpec.describe CardsController, type: :controller do
 
     describe 'PUT #update' do
       it 'returns http found' do
-        post :create, params: {
+        post :update, params: {
           id: card,
           card: {
             original_text: 'Original text for testing updated',
@@ -67,7 +67,6 @@ RSpec.describe CardsController, type: :controller do
             review_date: Time.now
           }
         }
-
         expect(response).to have_http_status(:found)
       end
     end
@@ -75,7 +74,6 @@ RSpec.describe CardsController, type: :controller do
     describe 'DELETE #destroy' do
       it 'returns http found' do
         delete :destroy, params: { id: card }
-
         expect(response).to have_http_status(:found)
       end
     end
