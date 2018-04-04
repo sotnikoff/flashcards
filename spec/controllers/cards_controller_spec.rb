@@ -30,7 +30,6 @@ RSpec.describe CardsController, type: :controller do
             review_date: Time.now
           }
         }
-
         expect(response).to have_http_status(:found)
       end
     end
