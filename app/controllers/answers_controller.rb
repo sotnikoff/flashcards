@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def new
-    @card = GetCardForDefault.call(default_deck)
+    @card = GetCardForDefault.call(default_deck, current_user)
   end
 
   def create
