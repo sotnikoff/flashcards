@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe CardsController, type: :controller do
-  before(:each) do
-    @user = create :user
-    session[:current_user_id] = @user.id
-  end
+RSpec.describe DecksController, type: :controller do
+  context 'no deck needed' do
+    before(:each) do
+      @user = create :user
+      session[:current_user_id] = @user.id
+    end
 
-  context 'no card needed' do
     describe 'GET #index' do
       it 'returns http success' do
         get :index
@@ -24,10 +24,9 @@ RSpec.describe CardsController, type: :controller do
     describe 'POST #create' do
       it 'returns http found' do
         post :create, params: {
-          card: {
-            original_text: 'Original text for testing',
-            translated_text: 'Translated text for testing',
-            review_date: Time.now
+          deck: {
+            title: 'Title of deck',
+            description: 'Test description for deck'
           }
         }
         expect(response).to have_http_status(:found)
@@ -35,23 +34,23 @@ RSpec.describe CardsController, type: :controller do
     end
   end
 
-  context 'card needed' do
-    let(:card) do
-      Card.create(original_text: 'Original text for testing',
-                  translated_text: 'Translated text for testing',
-                  user: @user,
-                  review_date: Time.now)
+  context 'deck needed' do
+    let(:deck) do
+      deck = create :deck
+      session[:current_user_id] = deck.id
+      deck
     end
+
     describe 'GET #show' do
       it 'returns http success' do
-        get :show, params: { id: card }
+        get :show, params: { id: deck }
         expect(response).to have_http_status(:success)
       end
     end
 
     describe 'GET #edit' do
       it 'returns http success' do
-        get :edit, params: { id: card }
+        get :edit, params: { id: deck }
         expect(response).to have_http_status(:success)
       end
     end
@@ -59,11 +58,10 @@ RSpec.describe CardsController, type: :controller do
     describe 'PUT #update' do
       it 'returns http found' do
         post :update, params: {
-          id: card,
-          card: {
-            original_text: 'Original text for testing updated',
-            translated_text: 'Translated text for testing updated',
-            review_date: Time.now
+          id: deck,
+          deck: {
+            title: 'New title of deck',
+            description: 'New test description for deck'
           }
         }
         expect(response).to have_http_status(:found)
@@ -72,7 +70,7 @@ RSpec.describe CardsController, type: :controller do
 
     describe 'DELETE #destroy' do
       it 'returns http found' do
-        delete :destroy, params: { id: card }
+        delete :destroy, params: { id: deck }
         expect(response).to have_http_status(:found)
       end
     end

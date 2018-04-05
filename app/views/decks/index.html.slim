@@ -1,0 +1,16 @@
+p
+  = link_to new_deck_path, class: 'btn btn-outline-success' do
+    = fa_icon 'plus', text: t('.create_button')
+- @decks.each do |deck|
+  .col-sm-3
+    .card
+      = link_to deck_path(deck), class: 'card-link' do
+        = image_tag deck.image, class: 'card-img-top' if deck.image
+      .card-body
+        h5.card-title= deck.title
+        p.card-text= deck.description
+        = link_to 'Перейти', deck_path(deck), class: 'card-link'
+        = link_to 'Изменить', edit_deck_path(deck), class: 'card-link'
+        = form_tag(user_path(current_user), method: :put)
+          = hidden_field_tag 'user[deck_id]', deck.id
+          = submit_tag 'Сделать по умолчанию', class: 'card-link'

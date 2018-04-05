@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def new
-    @card = Card.to_review.first
+    @card = GetCardForDefault.call(current_user)
   end
 
   def create
