@@ -2,8 +2,7 @@ module GetCardForDefault
   extend self
 
   def call(user)
-    deck = default_deck(user)
-    (deck&.cards&.to_review || random_or_empty_deck(user))&.first
+    (default_deck(user)&.cards&.to_review || random_or_empty_deck(user))&.first
   end
 
   private
