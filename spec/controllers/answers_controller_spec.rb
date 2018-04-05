@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
-  let(:card) { create :card }
+  let(:card) { build :card_without_user }
+  before(:each) do
+    @user = create :user
+    session[:current_user_id] = @user.id
+  end
   describe 'GET new' do
     it 'renders the new template' do
       get :new
@@ -12,6 +16,7 @@ RSpec.describe AnswersController, type: :controller do
   describe 'POST #create' do
     it 'returns http found' do
       created_card = card
+      created_card.update(user: @user)
       post :create, params: {
         id: created_card.id,
         answer: created_card.translated_text
