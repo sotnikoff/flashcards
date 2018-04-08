@@ -4,7 +4,7 @@ server '188.225.27.180', port: 22, roles: [:web, :app, :db], primary: true
 set :repo_url,        'git@github.com:sotnikoff/flashcards.git'
 set :application,     'flashcards'
 set :user,            'ms'
-set :puma_threads,    [2, 2]
+set :puma_threads,    [5, 5]
 set :puma_workers,    1
 
 # Don't change these unless you know what you're doing
