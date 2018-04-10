@@ -3,6 +3,6 @@ module CardFailHandler
   def call(card)
     return card.update(fails: 0, step: 0) if card.fails >= 3
     card.fails += 1
-    card.update
+    card.save
   end
 end
