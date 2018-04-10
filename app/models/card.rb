@@ -13,7 +13,7 @@ class Card < ApplicationRecord
   end
 
   before_create do
-    self.review_date = 3.days.since(Time.now)
+    self.review_date = 3.days.since
   end
 
   def compare_text
