@@ -4,5 +4,6 @@ module CardFailHandler
     return card.update(fails: 0, step: 0) if card.fails >= 3
     card.fails += 1
     card.save
+    card
   end
 end

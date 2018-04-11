@@ -8,5 +8,6 @@ module CardCorrectAnswerHandler
     card.fails = 0
     card.review_date += REVIEW_DATE_VALUES[card.step]
     card.save
+    card
   end
 end
