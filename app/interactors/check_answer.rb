@@ -1,7 +1,6 @@
 module CheckAnswer
   def self.call(compare_object, answer)
     if compare_answers(compare_object.translated_text, answer)
-      compare_object.update(review_date: 3.days.since)
       CardCorrectAnswerHandler.call(compare_object)
       I18n.t('answers.create.correct')
     else

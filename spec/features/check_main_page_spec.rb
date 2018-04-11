@@ -13,7 +13,6 @@ describe 'the answering process' do
       user = create :user
       @card = build :card_without_user
       @card.update!(user: user)
-      @card.update!(review_date: 2.days.ago)
       visit login_page_path
       within '#auth-form' do
         fill_in 'email', with: user.email
