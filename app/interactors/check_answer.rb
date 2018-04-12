@@ -1,5 +1,9 @@
 module CheckAnswer
-  def self.call(compare_object, answer)
+  extend self
+
+  MISTAKES_RATIO = 0.15
+
+  def call(compare_object, answer)
     if compare_answers(compare_object.translated_text, answer)
       CardCorrectAnswerHandler.call(compare_object)
       I18n.t('answers.create.correct')
@@ -9,9 +13,18 @@ module CheckAnswer
     end
   end
 
-  def self.compare_answers(translated_text, answer)
-    translated_text.casecmp(answer.strip).zero?
+  private
+
+  def compare_answers(translated_text, answer)
+    mistakes = calculate_mistakes(translated_text.length)
+    DamerauLevenshtein.distance(prepare(translated_text), prepare(answer)) <= mistakes
   end
 
-  private_class_method :compare_answers
+  def calculate_mistakes(length)
+    (length * MISTAKES_RATIO).round
+  end
+
+  def prepare(string)
+    string.downcase.strip
+  end
 end
