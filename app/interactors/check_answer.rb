@@ -13,7 +13,18 @@ module CheckAnswer
   private
 
   def compare_answers(translated_text, answer)
-    DamerauLevenshtein.distance(prepare(translated_text), prepare(answer)) <= 2
+    mistakes = calculate_mistakes(translated_text)
+    DamerauLevenshtein.distance(prepare(translated_text), prepare(answer)) <= mistakes
+  end
+
+  def calculate_mistakes(string)
+    if string.length.between?(1, 3)
+      0
+    elsif string.length.between?(4, 8)
+      1
+    else
+      2
+    end
   end
 
   def prepare(string)
