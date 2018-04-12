@@ -30,6 +30,4 @@ module CheckAnswer
   def prepare(string)
     string.downcase.strip
   end
-
-  private_class_method :compare_answers
 end
