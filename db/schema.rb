@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402122900) do
+ActiveRecord::Schema.define(version: 20180410062203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20180402122900) do
     t.string "image"
     t.bigint "deck_id"
     t.bigint "user_id"
+    t.integer "fails", default: 0
+    t.integer "step", default: 0
     t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
