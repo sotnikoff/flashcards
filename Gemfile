@@ -32,6 +32,7 @@ gem 'faraday'
 gem 'font-awesome-rails'
 gem 'mini_magick'
 gem 'pg', '~> 0.21.0'
+gem 'sidekiq'
 gem 'simple_form'
 gem 'slim'
 
