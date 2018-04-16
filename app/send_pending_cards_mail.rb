@@ -4,6 +4,6 @@ class SendPendingCardsMail
   include Sidekiq::Worker
 
   def perform
-    puts '465465421323456123124'
+    ::UserMailer.with(user: User.first).pending_cards.deliver_now
   end
 end
