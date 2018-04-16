@@ -1,4 +1,4 @@
 :schedule:
-  send_pending_cards_mail:
+  send_pending_mail_job:
     cron: '0 * * * * *'
-    class: SendPendingCardsMail
+    class: SendPendingMailJob
