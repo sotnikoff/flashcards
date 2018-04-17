@@ -1,4 +1,4 @@
 :schedule:
   send_pending_mail_job:
-    cron: '0 * * * * *'
+    every: '1d'
     class: SendPendingMailJob

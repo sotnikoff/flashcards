@@ -57,4 +57,7 @@ Rails.application.configure do
       api_key: ENV['MAILGUN_API_KEY'],
       domain: ENV['MAILGUN_DOMAIN']
   }
+  config.asset_host = 'http://localhost:3000'
 end
+
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'
