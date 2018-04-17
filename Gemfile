@@ -66,6 +66,7 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-rvm',     require: false
+  gem 'capistrano-sidekiq', require: false
   gem 'capistrano3-puma',   require: false
 
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
