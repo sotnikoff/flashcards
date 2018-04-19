@@ -23,5 +23,8 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale]
+    if current_user && current_user.locale != I18n.locale.to_s
+      current_user.update(locale: I18n.locale.to_s)
+    end
   end
 end
