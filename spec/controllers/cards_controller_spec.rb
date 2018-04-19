@@ -9,14 +9,14 @@ RSpec.describe CardsController, type: :controller do
   context 'no card needed' do
     describe 'GET #index' do
       it 'returns http success' do
-        get :index
+        get :index, params: { locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
 
     describe 'GET #new' do
       it 'returns http success' do
-        get :new
+        get :new, params: { locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
@@ -24,6 +24,7 @@ RSpec.describe CardsController, type: :controller do
     describe 'POST #create' do
       it 'returns http found' do
         post :create, params: {
+          locale: :ru,
           card: {
             original_text: 'Original text for testing',
             translated_text: 'Translated text for testing',
@@ -44,14 +45,14 @@ RSpec.describe CardsController, type: :controller do
     end
     describe 'GET #show' do
       it 'returns http success' do
-        get :show, params: { id: card }
+        get :show, params: { id: card, locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
 
     describe 'GET #edit' do
       it 'returns http success' do
-        get :edit, params: { id: card }
+        get :edit, params: { id: card, locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
@@ -60,6 +61,7 @@ RSpec.describe CardsController, type: :controller do
       it 'returns http found' do
         post :update, params: {
           id: card,
+          locale: :ru,
           card: {
             original_text: 'Original text for testing updated',
             translated_text: 'Translated text for testing updated',
@@ -72,7 +74,7 @@ RSpec.describe CardsController, type: :controller do
 
     describe 'DELETE #destroy' do
       it 'returns http found' do
-        delete :destroy, params: { id: card }
+        delete :destroy, params: { id: card, locale: :ru }
         expect(response).to have_http_status(:found)
       end
     end

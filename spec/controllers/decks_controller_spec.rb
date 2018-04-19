@@ -9,14 +9,14 @@ RSpec.describe DecksController, type: :controller do
 
     describe 'GET #index' do
       it 'returns http success' do
-        get :index
+        get :index, params: { locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
 
     describe 'GET #new' do
       it 'returns http success' do
-        get :new
+        get :new, params: { locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
@@ -24,6 +24,7 @@ RSpec.describe DecksController, type: :controller do
     describe 'POST #create' do
       it 'returns http found' do
         post :create, params: {
+          locale: :ru,
           deck: {
             title: 'Title of deck',
             description: 'Test description for deck'
@@ -43,14 +44,14 @@ RSpec.describe DecksController, type: :controller do
 
     describe 'GET #show' do
       it 'returns http success' do
-        get :show, params: { id: deck }
+        get :show, params: { id: deck, locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
 
     describe 'GET #edit' do
       it 'returns http success' do
-        get :edit, params: { id: deck }
+        get :edit, params: { id: deck, locale: :ru }
         expect(response).to have_http_status(:success)
       end
     end
@@ -59,6 +60,7 @@ RSpec.describe DecksController, type: :controller do
       it 'returns http found' do
         post :update, params: {
           id: deck,
+          locale: :ru,
           deck: {
             title: 'New title of deck',
             description: 'New test description for deck'
@@ -70,7 +72,7 @@ RSpec.describe DecksController, type: :controller do
 
     describe 'DELETE #destroy' do
       it 'returns http found' do
-        delete :destroy, params: { id: deck }
+        delete :destroy, params: { id: deck, locale: :ru }
         expect(response).to have_http_status(:found)
       end
     end

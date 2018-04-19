@@ -8,7 +8,8 @@ RSpec.describe SessionsController, type: :controller do
       authorizing_user = user
       post :create, params: {
         email: authorizing_user.email,
-        password: '123456'
+        password: '123456',
+        locale: :ru
       }
       expect(session[:current_user_id]).to eq(authorizing_user.id)
     end
@@ -16,7 +17,7 @@ RSpec.describe SessionsController, type: :controller do
     it 'fails with bad password' do
       authorizing_user = user
       session[:current_user_id] = authorizing_user.id
-      delete :destroy
+      delete :destroy, params: { locale: :ru }
       expect(session[:current_user_id]).to eq(nil)
     end
   end

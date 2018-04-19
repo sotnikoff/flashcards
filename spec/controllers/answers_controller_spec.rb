@@ -19,7 +19,8 @@ RSpec.describe AnswersController, type: :controller do
       created_card.update(user: @user)
       post :create, params: {
         id: created_card.id,
-        answer: created_card.translated_text
+        answer: created_card.translated_text,
+        locale: :ru
       }
       expect(response).to have_http_status(:found)
     end

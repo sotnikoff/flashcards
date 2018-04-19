@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'the answering process' do
   context 'no cards required' do
     scenario 'visit empty main page' do
-      visit '/'
+      visit '/ru'
       expect(page).to have_content I18n.t('answers.new.no_cards')
     end
   end
@@ -13,7 +13,7 @@ describe 'the answering process' do
       user = create :user
       @card = build :card_without_user
       @card.update!(user: user)
-      visit login_page_path
+      visit login_page_path(locale: :ru)
       within '#auth-form' do
         fill_in 'email', with: user.email
         fill_in 'password', with: '123456'
@@ -22,12 +22,12 @@ describe 'the answering process' do
     end
 
     scenario 'visit main page with cards' do
-      visit '/'
+      visit '/ru'
       expect(page).to have_content 'Zuhause'
     end
 
     scenario 'answer with translated text' do
-      visit '/'
+      visit '/ru'
       within '#answers-form' do
         fill_in 'answer', with: @card.translated_text
       end
