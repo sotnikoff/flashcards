@@ -1,59 +1,100 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
+  users:
+    update:
+      success: Update succesed
+      failure: Update failed
+  decks:
+    index:
+      create_button: Create a deck
+      make_default: Make default
+      open: Open
+      edit: Edit
+    create:
+      success: Deck was created
+      failure: Deck creation was failed
+    edit:
+      delete_button: Delete deck
+    show:
+      placeholder: Your answer
+      no_cards: No cards
+      button: Answer
+    destroy:
+      success: Deck was destroyed
+  registrations:
+    new:
+      email: Email
+      sign_up: Sign up
+      password: Password
+      password_confirmation: Password confirmnation
+    create:
+      registration_done: Signed up well!
+      registration_failed: Something went wrong
+  sessions:
+    new:
+      email: Email
+      log_in: Log in
+      password: Password
+    create:
+      authorization_done: You are authorized
+      authorization_failed: Authorization failed!
+    destroy:
+      log_out_done: Logged out!
   answers:
     new:
-      placeholder: Your answer goes here
-      no_cards: No cards available
+      placeholder: Your answer
+      no_cards: No cards
       button: Answer
     create:
-      correct: You're right!
+      correct: You are right!
       wrong: You're wrong!
   time:
     formats:
-      short_date: "%m/%d/%Y"
-      short_datetime: "%m/%d/%Y %H:%M"
+      short_date: "%d/%m/%Y"
+      short_datetime: "%d/%m/%Y %H:%M"
   actions:
     edit: Edit
     create: Create
-    delete: Delete
+    delete: delete
   cards:
     create:
-      success: Supercard was successfully created!
+      success: Supercard created!
+      failure: Card creation failed!
     update:
-      success: Supercard was successfully updated!
+      success: Supercard updated!
+      failure: Card updating failed!
     destroy:
-      success: Supercard was successfully destroyed!
+      success: Supercard deletion done!
+      failure: Supercard deletion failed!
   custom:
-      app_name: Flashcarder
-      cards_page: List of flashcards
-      add_new_card: Create new flashcard
+    app_name: Flashcarder
+    cards_page: Cards
+    decks_page: Decks
+    add_new_card: Create a card
+    login: Sign in
+    sign_up: Sign up
+  attributes:
+    created_at: Created
+    updated_at: Updated
+  activerecord:
+    errors:
+      messages:
+        not_same_word: Fields can not be the same!
+        record_invalid: Record error!
+      models:
+        card:
+          attributes:
+            original_text:
+              blank: Original text field cannot be blank
+            translated_text:
+              blank: Translated text field cannot be blank
+    models:
+      card:
+        few: Cards
+        many: Cards
+        one: Card
+        other: Cards
+    attributes:
+      card:
+        original_text: Original text
+        translated_text: Translated text
+        review_date: Review date
