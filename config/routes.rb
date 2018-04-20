@@ -7,11 +7,6 @@ Rails.application.routes.draw do
     post 'sessions', to: 'sessions#create', as: 'login'
     delete 'session', to: 'sessions#destroy', as: 'logout'
 
-    scope 'github' do
-      get 'new', to: 'github_sessions#new', as: 'github_new'
-      get 'callback', to: 'github_sessions#callback', as: 'github_callback'
-    end
-
     resources :cards
     resources :decks
     resources :answers, only: %i[new create]
@@ -19,5 +14,11 @@ Rails.application.routes.draw do
 
     root to: 'answers#new'
   end
-  root to: 'answers#new'
+
+  scope 'github' do
+    get 'new', to: 'github_sessions#new', as: 'github_new'
+    get 'callback', to: 'github_sessions#callback', as: 'github_callback'
+  end
+
+  root to: 'pages#index'
 end
