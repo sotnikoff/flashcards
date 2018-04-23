@@ -5,7 +5,7 @@ class PagesController < ApplicationController
              elsif header_locale
                header_locale
              else
-               'ru'
+               I18n.default_locale
              end
     redirect_to root_path(locale: locale)
   end
