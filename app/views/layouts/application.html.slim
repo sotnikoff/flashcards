@@ -29,14 +29,20 @@ html
                 = link_to t('custom.login'), login_page_path, class: 'nav-link'
               li.nav-item
                 = link_to t('custom.sign_up'), sign_up_page_path, class: 'nav-link'
-      .row
-        .col-md
-          - if notice
-            .alert.alert-primary role='alert'
-              = notice
-          - if alert
-            .alert.alert-danger role='alert'
-              = alert
+      - if notice || alert
+        .row
+          .col-md
+            - if notice
+              .alert.alert-primary role='alert'
+                = notice
+            - if alert
+              .alert.alert-danger role='alert'
+                = alert
       .row
         .col-lg
           = yield
+      .row#footer
+        .col-lg
+            - I18n.available_locales.each do |locale|
+              p
+                = link_to locale.upcase, root_path(locale: locale)

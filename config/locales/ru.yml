@@ -6,6 +6,9 @@ ru:
   decks:
     index:
       create_button: Создать колоду
+      make_default: Сделать по умолчанию
+      open: Открыть
+      edit: Редактировать
     create:
       success: Успешна создана колода
       failure: Ошибка создания колоды
