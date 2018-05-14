@@ -10,22 +10,29 @@ module CheckAnswer
     quality = calculate_quality(compare_object.step, distance, distance_limit)
     new_easiness = calculate_easiness(compare_object.easiness, quality)
 
+    operate(compare_object, quality, new_easiness)
+  end
+
+  private
+
+  def operate(compare_object, quality, new_easiness)
     if quality >= 3
-      new_params = { easiness: new_easiness, step: 1,
-                     interval: calculate_interval(compare_object.interval, compare_object.step + 1, new_easiness)
-      }
-      compare_object.update(new_params)
+      store_model(new_easiness, 1, compare_object)
       I18n.t('answers.create.correct')
     else
-      new_params = { easiness: new_easiness, step: compare_object.step,
-                     interval: calculate_interval(compare_object.interval, compare_object.step + 1, new_easiness)
-      }
-      compare_object.update(new_params)
+      store_model(new_easiness, compare_object.step + 1, compare_object)
       I18n.t('answers.create.wrong')
     end
   end
 
-  private
+  def store_model(new_easiness, step, compare_object)
+    new_params = { easiness: new_easiness, step: step,
+                   interval: calculate_interval(
+                     compare_object.interval,
+                     compare_object.step + 1, new_easiness)
+    }
+    compare_object.update(new_params)
+  end
 
   # Calculates distance with Levenshtein algorithm
   def calculate_distance(translated_text, answer)
