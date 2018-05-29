@@ -2,30 +2,30 @@ module SuperMemo
   extend self
   MISTAKES_RATIO = 0.15
 
-  def calculate(translated_text, answer, step, easiness)
+  def calculate(translated_text, answer, step, easiness, interval)
     distance = calculate_distance(translated_text, answer)
     distance_limit = calculate_distance_limit(translated_text.length)
     quality = calculate_quality(step, distance, distance_limit)
     new_easiness = calculate_easiness(easiness, quality)
 
+    operate(quality, new_easiness, step, interval)
   end
 
   private
 
-  def operate()
-    params = prepare_params()
+  def operate(quality, new_easiness, step, interval)
     if quality >= 3
-      
+      { result: :correct, step: 1 }
     else
-
-    end
+      { result: :incorrect, step: step + 1 }
+    end.merge(prepare_params(new_easiness, interval, step))
   end
 
-  def prepare_params(new_easiness, step, interval, previous_step)
-    { easiness: new_easiness, step: step,
+  def prepare_params(new_easiness, interval, step)
+    { easiness: new_easiness,
       interval: calculate_interval(
         interval,
-        previous_step + 1, new_easiness)
+        step + 1, new_easiness)
     }
   end
 
