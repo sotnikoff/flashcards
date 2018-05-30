@@ -2,7 +2,7 @@ module SuperMemo
   extend self
   MISTAKES_RATIO = 0.15
 
-  def calculate(translated_text, answer, step, easiness, interval)
+  def calculate(translated_text:, answer:, step:, easiness:, interval:)
     distance = calculate_distance(translated_text, answer)
     distance_limit = calculate_distance_limit(translated_text.length)
     quality = calculate_quality(step, distance, distance_limit)
