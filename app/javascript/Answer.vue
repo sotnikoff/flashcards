@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>{{ text }}</h1>
-        <form class="col-lg-6" id="answers-form" action="/ru/answers" accept-charset="UTF-8" method="post">
+        <h1><span v-if="card">{{ card.original_text }}</span></h1>
+        <form class="col-lg-6" id="answers-form" accept-charset="UTF-8" method="post" v-on:submit.prevent="postAnswer">
             <div class="form-group">
-                <input type="text" name="answer" id="answer" class="form-control" placeholder="Ваш ответ" required="required">
+                <input type="text" class="form-control" placeholder="Ваш ответ" v-model="answer" required="required">
             </div>
             <div class="form-group">
-                <input type="submit" name="commit" value="Ответить" class="btn btn-success" data-disable-with="Ответить">
+                <input type="submit" value="Ответить" class="btn btn-success" >
             </div>
         </form>
     </div>
@@ -16,7 +16,28 @@
     export default {
         data: function () {
             return {
-                text: 'Default card name'
+                answer: null,
+                card: null
+            }
+        },
+        created: function () {
+            this.getRandomCard()
+        },
+        methods: {
+            postAnswer: function () {
+                this.$http.post('/ru/answers', { answer: this.answer, id: this.card.id }).then(function (response) {
+                    this.getRandomCard()
+                    this.answer = null
+                }, function (response) {
+                    console.log('error sending data')
+                })
+            },
+            getRandomCard: function () {
+                this.$http.get('/ru').then(function (response) {
+                    this.card = response.body
+                }, function () {
+                    console.log('error')
+                })
             }
         }
     }
