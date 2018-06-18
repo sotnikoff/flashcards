@@ -1,11 +1,5 @@
 class AnswersController < ApplicationController
-  def new
-    @card = GetCardForDefault.call(current_user)
-    respond_to do |format|
-      format.html
-      format.json { render json: @card }
-    end
-  end
+  def index; end
 
   def create
     card = Card.find(params[:id])

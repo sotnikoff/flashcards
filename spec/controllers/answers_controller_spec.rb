@@ -6,10 +6,10 @@ RSpec.describe AnswersController, type: :controller do
     @user = create :user
     session[:current_user_id] = @user.id
   end
-  describe 'GET new' do
+  describe 'GET index' do
     it 'renders the new template' do
-      get :new, params: { locale: :ru }
-      expect(response).to render_template('new')
+      get :index, params: { locale: :ru }
+      expect(response).to render_template('index')
     end
   end
 

@@ -13,6 +13,13 @@ class CardsController < ApplicationController
     @card = Card.new
   end
 
+  def random_card
+    @card = GetCardForDefault.call(current_user)
+    respond_to do |format|
+      format.json { render json: @card }
+    end
+  end
+
   def update
     if @card.update(card_params)
       redirect_to @card, notice: t('.success')
