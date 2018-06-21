@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       get 'random_card', on: :collection
     end
     resources :decks
-    resources :answers, only: %i[index create]
+    resources :answers, only: %i[index] do
+      post 'check', on: :collection
+    end
     resources :users, only: %i[update]
 
     root to: 'answers#index'

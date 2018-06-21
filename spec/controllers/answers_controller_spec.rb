@@ -13,11 +13,11 @@ RSpec.describe AnswersController, type: :controller do
     end
   end
 
-  describe 'POST #create' do
+  describe 'POST #check' do
     it 'returns http found' do
       created_card = card
       created_card.update(user: @user)
-      post :create, params: {
+      post :check, params: {
         id: created_card.id,
         answer: created_card.translated_text,
         locale: :ru

@@ -15,9 +15,7 @@ class CardsController < ApplicationController
 
   def random_card
     @card = GetCardForDefault.call(current_user)
-    respond_to do |format|
-      format.json { render json: @card }
-    end
+    render json: @card
   end
 
   def update
