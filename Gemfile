@@ -19,7 +19,6 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -40,6 +39,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'simple_form'
 gem 'slim'
+gem 'webpacker', '~> 3.5'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
@@ -57,6 +57,7 @@ group :development, :test do
   gem 'damerau-levenshtein'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
+  gem 'foreman'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', require: false

@@ -1,6 +1,9 @@
 class Card < ApplicationRecord
   mount_uploader :image, CardImageUploader
-  scope :to_review, -> { where('review_date <= ?', Time.now).order('RANDOM()').limit(1) }
+  scope :to_review, lambda {
+    where('review_date <= ?', Time.now).select(:id,
+      :original_text, :image).order('RANDOM()').limit(1)
+  }
   scope :without_deck, -> { where(deck_id: nil) }
   belongs_to :deck, optional: true
   belongs_to :user

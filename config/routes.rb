@@ -7,12 +7,16 @@ Rails.application.routes.draw do
     post 'sessions', to: 'sessions#create', as: 'login'
     delete 'session', to: 'sessions#destroy', as: 'logout'
 
-    resources :cards
+    resources :cards do
+      get 'random_card', on: :collection
+    end
     resources :decks
-    resources :answers, only: %i[new create]
+    resources :answers, only: %i[index] do
+      post 'check', on: :collection
+    end
     resources :users, only: %i[update]
 
-    root to: 'answers#new'
+    root to: 'answers#index'
   end
 
   scope 'github' do

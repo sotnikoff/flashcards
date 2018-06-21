@@ -6,18 +6,18 @@ RSpec.describe AnswersController, type: :controller do
     @user = create :user
     session[:current_user_id] = @user.id
   end
-  describe 'GET new' do
+  describe 'GET index' do
     it 'renders the new template' do
-      get :new, params: { locale: :ru }
-      expect(response).to render_template('new')
+      get :index, params: { locale: :ru }
+      expect(response).to render_template('index')
     end
   end
 
-  describe 'POST #create' do
+  describe 'POST #check' do
     it 'returns http found' do
       created_card = card
       created_card.update(user: @user)
-      post :create, params: {
+      post :check, params: {
         id: created_card.id,
         answer: created_card.translated_text,
         locale: :ru

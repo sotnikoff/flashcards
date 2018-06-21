@@ -10,14 +10,14 @@ RSpec.describe CardsController, type: :controller do
     describe 'GET #index' do
       it 'returns http success' do
         get :index, params: { locale: :ru }
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
 
     describe 'GET #new' do
       it 'returns http success' do
         get :new, params: { locale: :ru }
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
 
@@ -46,14 +46,14 @@ RSpec.describe CardsController, type: :controller do
     describe 'GET #show' do
       it 'returns http success' do
         get :show, params: { id: card, locale: :ru }
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
 
     describe 'GET #edit' do
       it 'returns http success' do
         get :edit, params: { id: card, locale: :ru }
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
 
@@ -69,6 +69,13 @@ RSpec.describe CardsController, type: :controller do
           }
         }
         expect(response).to have_http_status(:found)
+      end
+    end
+
+    describe 'GET #random_card' do
+      it 'returns http success' do
+        get :random_card, params: { locale: :ru, format: :json }
+        expect(response).to be_successful
       end
     end
 

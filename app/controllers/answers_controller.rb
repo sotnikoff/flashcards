@@ -1,11 +1,14 @@
 class AnswersController < ApplicationController
-  def new
-    @card = GetCardForDefault.call(current_user)
-  end
+  def index; end
 
-  def create
+  def check
     card = Card.find(params[:id])
     notice = CheckAnswer.call(card, params[:answer])
-    redirect_to root_path, notice: notice
+    respond_to do |format|
+      format.html do
+        redirect_to root_path, notice: notice
+      end
+      format.json { render json: { message: notice } }
+    end
   end
 end

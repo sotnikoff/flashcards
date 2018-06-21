@@ -3,6 +3,8 @@ addons:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database flashcards_test;' -U postgres
+  - yarn install
+  - bundle exec bin/webpack
 dist: trusty
 language: ruby
 rvm:

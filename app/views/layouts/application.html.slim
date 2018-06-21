@@ -43,6 +43,7 @@ html
           = yield
       .row#footer
         .col-lg
-            - I18n.available_locales.each do |locale|
-              p
-                = link_to locale.upcase, root_path(locale: locale)
+          - I18n.available_locales.each do |locale|
+            p
+              = link_to locale.upcase, root_path(locale: locale)
+      = yield :js_packs
